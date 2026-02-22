@@ -51,7 +51,7 @@ export default function Home() {
       {/* Glow Dourado de fundo */}
       <div className="absolute w-[600px] h-[600px] bg-[#D4AF37]/5 rounded-full blur-[150px] -z-10" />
 
-      <div className="absolute bottom-0 left-0 w-full overflow-hidden bg-black py-4">
+      <div className="absolute bottom-5 left-0 w-full overflow-hidden bg-black py-4">
 
         {/* Fade lateral esquerdo */}
         <div className="absolute left-0 top-0 h-full w-16 bg-gradient-to-r from-black to-transparent z-10" />

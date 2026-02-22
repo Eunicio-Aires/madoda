@@ -35,7 +35,7 @@ export default function Home() {
       >
 
         <h1 className="text-6xl md:text-8xl font-serif font-bold tracking-tighter text-[#D4AF37]">
-          Mr. Madoda
+          Mr. <br /> Madoda
         </h1>
 
         {/* Linha Dourada Animada */}

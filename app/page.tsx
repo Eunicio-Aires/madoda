@@ -116,7 +116,7 @@ export default function CheckoutPage() {
     setItemQty(1);
     setItemPrice(0);
   };
-
+ 
   const handleRemoveItem = (id: string) => {
     setItems(items.filter((item) => item.id !== id));
   };
@@ -147,7 +147,7 @@ export default function CheckoutPage() {
   return (
     <div className="min-h-screen bg-gray-100 p-6 flex justify-center items-center">
       <div className="w-full max-w-2xl bg-white p-6 rounded-lg shadow-md">
-        <h2 className="text-xl font-bold mb-4 text-black border-b pb-2">Nova Venda - Madoda Fashion</h2>
+        <h2 className="text-xl font-bold mb-4 text-black border-b pb-2">Nova Venda - Madoda Fashion store</h2>
         
         <div className="grid grid-cols-2 gap-4 mb-6">
           <div>

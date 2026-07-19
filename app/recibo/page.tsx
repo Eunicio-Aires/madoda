@@ -408,7 +408,7 @@ export default function ReceiptPage() {
         
         {/* Cabeçalho */}
         <div className="text-center mb-4">
-          <h1 className="text-2xl font-bold">MADODA FASHION STORE</h1>
+          <h1 className="text-3xl font-bold">MADODA FASHION STORE</h1>
           <p>Av. Moçambique, 25 de Junho - Maputo</p>
           <p>Tel: +258 86 890 82 84</p>
           <p>NUIT: 265183</p>
@@ -417,7 +417,7 @@ export default function ReceiptPage() {
         <div className="border-t-2 border-dashed border-black my-4"></div>
 
         {/* Informações da Venda */}
-        <div className="mb-4 space-y-2">
+        <div className="mb-4 space-y-2 text-md">
           <p>Data: {dateObj.toLocaleDateString('pt-MZ')} {dateObj.toLocaleTimeString('pt-MZ')}</p>
           <p>Recibo Nº: {Math.floor(Math.random() * 10000).toString().padStart(5, '0')}</p>
           <p>Operador: {data.operator}</p>

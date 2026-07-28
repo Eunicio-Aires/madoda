@@ -495,7 +495,7 @@ export default function ReceiptPage() {
     <div className="text-center mb-6">
       <h1 className="text-3xl font-black uppercase tracking-widest mb-1">Expresso</h1>
       <h2 className="text-xl font-bold uppercase leading-tight mb-2">Electro Ferragens, Lda.</h2>
-      <div className="text-sm text-gray-700 print:text-black leading-relaxed">
+      <div className="text-md text-black print:text-black leading-relaxed">
         <p>Av. Filipe Samuel Magaia N-261</p>
         <p>Maputo - Moçambique</p>
         <p>Tel: 21322081 / 21305406</p>
@@ -503,10 +503,10 @@ export default function ReceiptPage() {
       </div>
     </div>
 
-    <div className="border-t border-dashed border-gray-400 print:border-black my-4"></div>
+    <div className="border-t border-dashed border-black print:border-black my-4"></div>
 
     {/* Informações da Venda (Transformado em Grid para melhor alinhamento) */}
-    <div className="mb-4 text-sm grid grid-cols-2 gap-y-2">
+    <div className="mb-4 text-md grid grid-cols-2 gap-y-2">
       <p><span className="font-semibold">Data:</span> {dateObj.toLocaleDateString('pt-MZ')}</p>
       <p className="text-right"><span className="font-semibold">Hora:</span> {dateObj.toLocaleTimeString('pt-MZ')}</p>
       <p><span className="font-semibold">Recibo:</span> #{Math.floor(Math.random() * 10000).toString().padStart(5, '0')}</p>
@@ -514,17 +514,17 @@ export default function ReceiptPage() {
       <p className="col-span-2 mt-1 truncate"><span className="font-semibold">Cliente:</span> {data.customer || 'Júlio'}</p>
     </div>
 
-    <div className="border-t border-dashed border-gray-400 print:border-black my-4"></div>
+    <div className="border-t border-dashed border-black print:border-black my-4"></div>
 
     {/* Cabeçalho da Tabela */}
-    <div className="flex justify-between font-bold text-sm mb-3 uppercase border-b border-gray-300 print:border-black pb-2">
+    <div className="flex justify-between font-bold text-md mb-3 uppercase border-b border-gray-300 print:border-black pb-2">
       <span className="w-3/5 text-left">Artigo</span>
       <span className="w-1/5 text-center">Qtd</span>
       <span className="w-1/5 text-right">Total</span>
     </div>
 
     {/* Lista de Itens */}
-    <div className="space-y-3 mb-6 text-sm">
+    <div className="space-y-3 mb-6 text-md">
       {data.items.map((item) => (
         <div key={item.id} className="flex justify-between items-start">
           <span className="w-3/5 pr-2 leading-tight break-words">{item.name}</span>
@@ -534,7 +534,7 @@ export default function ReceiptPage() {
       ))}
     </div>
 
-    <div className="border-t border-dashed border-gray-400 print:border-black my-4"></div>
+    <div className="border-t border-dashed border-black print:border-black my-4"></div>
 
     {/* Totais */}
     <div className="space-y-2 mb-6">
@@ -542,7 +542,7 @@ export default function ReceiptPage() {
         <span>TOTAL A PAGAR:</span>
         <span>{data.total.toLocaleString('pt-MZ', { minimumFractionDigits: 2 })} MT</span>
       </div>
-      <div className="flex justify-between text-sm text-gray-600 print:text-black">
+      <div className="flex justify-between text-md text-black print:text-black">
         <span>Método de Pagamento:</span>
         <span className="uppercase font-semibold">{data.paymentMethod}</span>
       </div>
@@ -558,10 +558,10 @@ export default function ReceiptPage() {
         </span>
       </div>
       
-      <div className="space-y-1 text-sm text-gray-700 print:text-black">
-        <p className="font-bold text-base text-black">Obrigado pela preferência!</p>
-        <p className="text-xs">Conserve este talão como prova de compra.</p>
-        <p className="text-xs mt-3 pt-3 border-t border-gray-200 print:border-transparent inline-block">
+      <div className="space-y-1 text-md text-black print:text-black mt-34">
+        <p className="font-bold text-lg text-black">Obrigado pela preferência!</p>
+        <p className="text-md">Conserve este talão como prova de compra.</p>
+        <p className="text-md mt-3 pt-3 border-t border-gray-200 print:border-transparent inline-block">
           Processado por Computador
         </p>
       </div>

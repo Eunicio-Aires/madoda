@@ -508,6 +508,7 @@ export default function ReceiptPage() {
     {/* Informações da Venda (Transformado em Grid para melhor alinhamento) */}
     <div className="mb-4 text-md grid grid-cols-2 gap-y-2">
       <p><span className="font-semibold">Data:</span> {dateObj.toLocaleDateString('pt-MZ')}</p>
+      {/* {dateObj.toLocaleDateString('pt-MZ')} */}
       <p className="text-right"><span className="font-semibold">Hora:</span> {dateObj.toLocaleTimeString('pt-MZ')}</p>
       <p><span className="font-semibold">Recibo:</span> #{Math.floor(Math.random() * 10000).toString().padStart(5, '0')}</p>
       <p className="text-right"><span className="font-semibold">Op:</span> {data.operator}</p>

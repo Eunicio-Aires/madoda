@@ -12,7 +12,7 @@
 //         id="receipt-content"
 //         className="w-[300px] bg-white p-4 text-black font-mono text-xs shadow-md print:shadow-none print:w-full print:max-w-[80mm] print:m-0 print:p-0"
 //       >
-        
+
 //         {/* Cabeçalho da Loja */}
 //         <div className="text-center mb-4">
 //           <h1 className="text-lg font-bold">MADODA FASHION STORE</h1>
@@ -110,7 +110,7 @@
 //   const [operator, setOperator] = useState('Caixa 01');
 //   const [paymentMethod, setPaymentMethod] = useState('M-Pesa');
 //   const [items, setItems] = useState<ReceiptItem[]>([]);
-  
+
 //   // Estados temporários para adicionar um novo item
 //   const [itemName, setItemName] = useState('');
 //   const [itemQty, setItemQty] = useState(1);
@@ -145,13 +145,13 @@
 
 //   return (
 //     <div className="flex flex-col md:flex-row min-h-screen bg-gray-100 p-4 gap-6 print:bg-white print:p-0 print:block">
-      
+
 //       {/* 
 //         =========================================
 //         ÁREA DO FORMULÁRIO (Oculta na impressão)
 //         =========================================
 //       */}
-    
+
 
 //       {/* 
 //         =========================================
@@ -197,7 +197,7 @@
 //                   <span className="w-1/2 truncate pr-1">{item.name}</span>
 //                   <span className="w-1/4 text-center">{item.qty}</span>
 //                   <span className="w-1/4 text-right">{(item.price * item.qty).toLocaleString('pt-MZ')}</span>
-                  
+
 //                   {/* Botão de excluir item (aparece ao passar o mouse e some na impressão) */}
 //                   <button 
 //                     onClick={() => handleRemoveItem(item.id)}
@@ -259,7 +259,7 @@
 //     const storedData = localStorage.getItem('madoda_receipt');
 //     if (storedData) {
 //       setData(JSON.parse(storedData));
-      
+
 //       // Opcional: Aciona a impressão automaticamente após 1 segundo
 //       // setTimeout(() => { window.print() }, 1000);
 //     } else {
@@ -274,7 +274,7 @@
 
 //   return (
 //     <div className="flex justify-center bg-gray-200 min-h-screen p-4 print:p-0 print:bg-white">
-      
+
 //       {/* Botões de Ação (Não saem na impressão) */}
 //       <div className="absolute top-4 right-4 space-x-2 print:hidden">
 //         <button 
@@ -293,7 +293,7 @@
 
 //       {/* Conteúdo do Recibo (80mm) */}
 //       <div className="w-[300px] bg-white p-4 text-black font-mono text-xs shadow-md print:shadow-none print:w-full print:max-w-[80mm] print:m-0 print:p-0">
-        
+
 //         <div className="text-center mb-4">
 //           <h1 className="text-lg font-bold">MADODA FASHION STORE</h1>
 //           <p>Av. Mocambique, 25 de Junho - Maputo</p>
@@ -382,7 +382,7 @@ export default function ReceiptPage() {
       w-full e min-h-screen garantem que a página ocupe 100% da tela.
     */
     // <div className="w-full min-h-screen bg-white relative print:bg-white">
-      
+
     //   {/* Botões Flutuantes (Fixos para não ocupar espaço no documento) */}
     //   {/* <div className="fixed top-4 right-4 flex gap-2 print:hidden z-10">
     //     <button 
@@ -405,7 +405,7 @@ export default function ReceiptPage() {
     //     Aumentei a fonte para text-base para melhorar a leitura na tela cheia.
     //   */}
     //   <div className="w-full min-h-screen mt-6 flex flex-col bg-white p-4 pt-20 text-black font-mono text-base print:text-sm print:p-0 print:block print:min-h-0">
-        
+
     //     {/* Cabeçalho */}
     //     <div className="text-center mb-4">
     //     <h1 className="text-3xl font-extrabold font-italic">Expresso</h1>
@@ -480,97 +480,106 @@ export default function ReceiptPage() {
 
 
     <div className="w-full min-h-screen bg-gray-50 flex flex-col items-center print:bg-white print:block print:min-h-0">
-  
-  {/* Botões Flutuantes (Descomente quando precisar) */}
-  {/* <div className="fixed top-4 right-4 flex gap-2 print:hidden z-10">...</div> */}
 
-  {/* 
+      {/* Botões Flutuantes (Descomente quando precisar) */}
+      {/* <div className="fixed top-4 right-4 flex gap-2 print:hidden z-10">...</div> */}
+
+      {/* 
     Container Principal: 
     Foi adicionado um max-w-md para que na tela do computador não fique largo demais, 
     imitando o formato de um talão. No mobile ou na impressão, ele ajusta-se perfeitamente.
   */}
-  <div className="w-full max-w-md bg-white p-6 pt-12 flex flex-col flex-1 shadow-sm text-black font-mono print:shadow-none print:w-full print:max-w-none print:p-0 print:m-0">
-    
-    {/* Cabeçalho */}
-    <div className="text-center mb-6">
-      <h1 className="text-3xl font-black uppercase tracking-widest mb-1">Expresso</h1>
-      <h2 className="text-xl font-bold uppercase leading-tight mb-2">Electro Ferragens, Lda.</h2>
-      <div className="text-md text-black print:text-black leading-relaxed">
-        <p>Av. Filipe Samuel Magaia N-261</p>
-        <p>Maputo - Moçambique</p>
-        <p>Tel: 21322081 / 21305406</p>
-        <p className="mt-1">NUIT: <span className="font-bold">265183</span></p>
-      </div>
-    </div>
+      <div className="w-full max-w-md bg-white p-6 pt-12 flex flex-col flex-1 shadow-sm text-black font-mono print:shadow-none print:w-full print:max-w-none print:p-0 print:m-0">
 
-    <div className="border-t border-dashed border-black print:border-black my-4"></div>
-
-    {/* Informações da Venda (Transformado em Grid para melhor alinhamento) */}
-    <div className="mb-4 text-md grid grid-cols-2 gap-y-2">
-      <p><span className="font-semibold">Data:</span> 14/08/2026</p>
-      {/* {dateObj.toLocaleDateString('pt-MZ')} */}
-      <p className="text-right"><span className="font-semibold">Hora:</span> {dateObj.toLocaleTimeString('pt-MZ')}</p>
-      <p><span className="font-semibold">Recibo:</span> #{Math.floor(Math.random() * 10000).toString().padStart(5, '0')}</p>
-      <p className="text-right"><span className="font-semibold">Op:</span> {data.operator}</p>
-      <p className="col-span-2 mt-1 truncate"><span className="font-semibold">Cliente:</span> {data.customer || 'Júlio'}</p>
-    </div>
-
-    <div className="border-t border-dashed border-black print:border-black my-4"></div>
-
-    {/* Cabeçalho da Tabela */}
-    <div className="flex justify-between font-bold text-md mb-3 uppercase border-b border-gray-300 print:border-black pb-2">
-      <span className="w-3/5 text-left">Artigo</span>
-      <span className="w-1/5 text-center">Qtd</span>
-      <span className="w-1/5 text-right">Total</span>
-    </div>
-
-    {/* Lista de Itens */}
-    <div className="space-y-3 mb-6 text-md">
-      {data.items.map((item) => (
-        <div key={item.id} className="flex justify-between items-start">
-          <span className="w-3/5 pr-2 leading-tight break-words">{item.name}</span>
-          <span className="w-1/5 text-center">{item.qty}</span>
-          <span className="w-1/5 text-right font-medium">{(item.price * item.qty).toLocaleString('pt-MZ')}</span>
+        {/* Cabeçalho */}
+        <div className="text-center mb-6">
+          <h1 className="text-3xl font-black uppercase tracking-widest mb-1">Expresso</h1>
+          <h2 className="text-xl font-bold uppercase leading-tight mb-2">Electro Ferragens, Lda.</h2>
+          <div className="text-md text-black print:text-black leading-relaxed">
+            <p>Av. Filipe Samuel Magaia N-261</p>
+            <p>Maputo - Moçambique</p>
+            <p>Tel: 21322081 / 21305406</p>
+            <p className="mt-1">NUIT: <span className="font-bold">265183</span></p>
+          </div>
         </div>
-      ))}
-    </div>
 
-    <div className="border-t border-dashed border-black print:border-black my-4"></div>
+        <div className="border-t border-dashed border-black print:border-black my-4"></div>
 
-    {/* Totais */}
-    <div className="space-y-2 mb-6">
-      <div className="flex justify-between font-bold text-xl">
-        <span>TOTAL A PAGAR:</span>
-        <span>{data.total.toLocaleString('pt-MZ', { minimumFractionDigits: 2 })} MT</span>
-      </div>
-      <div className="flex justify-between text-md text-black print:text-black">
-        <span>Método de Pagamento:</span>
-        <span className="uppercase font-semibold">{data.paymentMethod}</span>
-      </div>
-    </div>
+        {/* Informações da Venda (Transformado em Grid para melhor alinhamento) */}
+        <div className="mb-4 text-md grid grid-cols-2 gap-y-2">
+          <p><span className="font-semibold">Data:</span> 14/08/2026</p>
+          {/* {dateObj.toLocaleDateString('pt-MZ')} */}
+          <p className="text-right"><span className="font-semibold">Hora:</span> 11:18:40</p>
+          <p><span className="font-semibold">Recibo:</span> #{Math.floor(Math.random() * 10000).toString().padStart(5, '0')}</p>
+          <p className="text-right"><span className="font-semibold">Op:</span> {data.operator}</p>
+          <p className="col-span-2 mt-1 truncate"><span className="font-semibold">Cliente:</span> {data.customer || 'Júlio'}</p>
+        </div>
 
-    {/* Rodapé Dinâmico (Empurrado para o fim com mt-auto) */}
-    <div className="mt-auto pt-8 text-center">
-      
-      {/* Etiqueta de Isenção de IVA */}
-      <div className="mb-6">
+        <div className="border-t border-dashed border-black print:border-black my-4"></div>
+
+        {/* Cabeçalho da Tabela */}
+        <div className="flex justify-between font-bold text-md mb-3 uppercase border-b border-gray-300 print:border-black pb-2">
+          <span className="w-3/5 text-left">Artigo</span>
+          <span className="w-1/5 text-center">Qtd</span>
+          <span className="w-1/5 text-right">Total</span>
+        </div>
+
+        {/* Lista de Itens */}
+        <div className="space-y-3 mb-6 text-md">
+          {data.items.map((item) => (
+            <div key={item.id} className="flex justify-between items-start">
+              <span className="w-3/5 pr-2 leading-tight break-words">{item.name}</span>
+              <span className="w-1/5 text-center">{item.qty}</span>
+              <span className="w-1/5 text-right font-medium">{(item.price * item.qty).toLocaleString('pt-MZ')}</span>
+            </div>
+          ))}
+        </div>
+
+        <div className="border-t border-dashed border-black print:border-black my-4"></div>
+
+        {/* Totais */}
+        <div className="space-y-2 mb-6">
+          <div className="flex justify-between font-bold text-xl">
+            <span>TOTAL A PAGAR:</span>
+            <span>{data.total.toLocaleString('pt-MZ', { minimumFractionDigits: 2 })} MT</span>
+          </div>
+          <div className="flex justify-between text-md text-black print:text-black">
+            <span>Método de Pagamento:</span>
+            <span className="uppercase font-semibold">{data.paymentMethod}</span>
+          </div>
+        </div>
+
+        {/* Rodapé Dinâmico (Empurrado para o fim com mt-auto) */}
+        <div className="mt-auto pt-8 text-center">
+
+          {/* Etiqueta de Isenção de IVA */}
+          {/* <div className="mb-6">
         <span className="font-bold text-sm border-2 border-black print:border-black px-4 py-1 uppercase tracking-wider inline-block">
           * Isento de IVA *
         </span>
-      </div>
-      
-      <div className="space-y-1 text-md text-black print:text-black mt-34">
-        <p className="font-bold text-lg text-black">Obrigado pela preferência!</p>
-        <p className="text-md">Conserve este talão como prova de compra.</p>
-        <p className="text-md mt-3 pt-3 border-t border-gray-200 print:border-transparent inline-block">
-          Processado por Computador
-        </p>
-      </div>
-      <div className="mt-54 border-t border-dashed border-gray-400 print:border-black"></div>
-    </div>
+      </div> */}
+          <div className="my-8 flex justify-center items-center overflow-visible">
+            <div className="my-10 flex justify-center items-center overflow-visible">
+              <div className="inline-block transform -rotate-[12deg] border-[5px] border-black print:border-black rounded-2xl px-10 py-3.5 opacity-90 print:opacity-100 shadow-sm">
+                <span className="block text-4xl font-black text-black print:text-black uppercase tracking-[0.2em] leading-none ml-2">
+                  PAGO
+                </span>
+              </div>
+            </div>
+          </div>
 
-  </div>
-  
-</div>
-  );
+            <div className="space-y-1 text-md text-black print:text-black mt-34">
+              <p className="font-bold text-lg text-black">Obrigado pela preferência!</p>
+              <p className="text-md">Conserve este talão como prova de compra.</p>
+              <p className="text-md mt-3 pt-3 border-t border-gray-200 print:border-transparent inline-block">
+                Processado por Computador
+              </p>
+            </div>
+            <div className="mt-54 border-t border-dashed border-gray-400 print:border-black"></div>
+          </div>
+
+        </div>
+
+      </div>
+      );
 }

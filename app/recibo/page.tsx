@@ -507,7 +507,7 @@ export default function ReceiptPage() {
 
         {/* Informações da Venda (Transformado em Grid para melhor alinhamento) */}
         <div className="mb-4 text-md grid grid-cols-2 gap-y-2">
-          <p><span className="font-semibold">Data:</span> 14/08/2026</p>
+          <p><span className="font-semibold">Data:</span> 28/08/2026</p>
           {/* {dateObj.toLocaleDateString('pt-MZ')} */}
           <p className="text-right"><span className="font-semibold">Hora:</span> 11:18:40</p>
           <p><span className="font-semibold">Recibo:</span> #{Math.floor(Math.random() * 10000).toString().padStart(5, '0')}</p>
@@ -559,13 +559,13 @@ export default function ReceiptPage() {
         </span>
       </div> */}
           <div className="my-8 flex justify-center items-center overflow-visible">
-            <div className="my-10 flex justify-center items-center overflow-visible">
+            {/* <div className="my-10 flex justify-center items-center overflow-visible">
               <div className="inline-block transform -rotate-[12deg] border-[5px] border-black print:border-black rounded-2xl px-10 py-3.5 opacity-90 print:opacity-100 shadow-sm">
                 <span className="block text-4xl font-black text-black print:text-black uppercase tracking-[0.2em] leading-none ml-2">
                   PAGO
                 </span>
               </div>
-            </div>
+            </div> */}
           </div>
 
             <div className="space-y-1 text-md text-black print:text-black mt-34">

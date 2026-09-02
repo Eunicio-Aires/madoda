@@ -563,7 +563,7 @@ const router = useRouter();
           </div>
           <div className="flex justify-between font-bold text-xl mt-2 pt-2 border-t border-gray-300 print:border-black">
             <span>TOTAL A PAGAR:</span>
-            <span>{((data.total ?? 0) + 969.07).toLocaleString('pt-MZ', { minimumFractionDigits: 2 })} MT</span>
+            <span>{((data.total ?? 0) + 969.07 + 1 ).toLocaleString('pt-MZ', { minimumFractionDigits: 2 })} MT</span>
           </div>
           <div className="flex justify-between text-md text-black print:text-black mt-2">
             <span>Método de Pagamento:</span>

@@ -169,6 +169,7 @@ export default function CheckoutPage() {
               <option value="M-Pesa">M-Pesa</option>
               <option value="Cartão">Cartão</option>
               <option value="Numerário">Numerário</option>
+              <option value="E-mola">E-mola</option>
             </select>
           </div>
         </div>

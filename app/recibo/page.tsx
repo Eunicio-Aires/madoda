@@ -357,10 +357,29 @@
 
 import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { ReceiptData } from '../types/receipt';
+// import { ReceiptData } from '../types/receipt';
+
+interface ReceiptItem {
+  id: string | number;
+  name: string;
+  qty: number;
+  price: number;
+}
+
+interface ReceiptData {
+  customer?: string;
+  operator?: string;
+  date: string;
+  paymentMethod?: string;
+  subtotal: number;
+  iva: number;
+  total: number;
+  items: ReceiptItem[];
+}
 
 export default function ReceiptPage() {
-  const router = useRouter();
+  
+const router = useRouter();
   const [data, setData] = useState<ReceiptData | null>(null);
 
   useEffect(() => {
@@ -372,7 +391,7 @@ export default function ReceiptPage() {
     }
   }, [router]);
 
-  if (!data) return <div className="p-10 text-center">Carregando recibo...</div>;
+  if (!data) return <div className="p-10 text-center font-mono">Carregando cotação...</div>;
 
   const dateObj = new Date(data.date);
 
@@ -479,27 +498,22 @@ export default function ReceiptPage() {
     // </div>
 
 
-    <div className="w-full min-h-screen bg-gray-50 flex flex-col items-center print:bg-white print:block print:min-h-0">
 
-      {/* Botões Flutuantes (Descomente quando precisar) */}
-      {/* <div className="fixed top-4 right-4 flex gap-2 print:hidden z-10">...</div> */}
 
-      {/* 
-    Container Principal: 
-    Foi adicionado um max-w-md para que na tela do computador não fique largo demais, 
-    imitando o formato de um talão. No mobile ou na impressão, ele ajusta-se perfeitamente.
-  */}
-      <div className="w-full max-w-md bg-white p-6 pt-12 flex flex-col flex-1 shadow-sm text-black font-mono print:shadow-none print:w-full print:max-w-none print:p-0 print:m-0">
+
+<div className="w-full max-w-md bg-white p-6 pt-12 flex flex-col flex-1 shadow-sm text-black font-mono print:shadow-none print:w-full print:max-w-none print:p-0 print:m-0">
 
         {/* Cabeçalho */}
         <div className="text-center mb-6">
-          <h1 className="text-3xl font-black uppercase tracking-widest mb-1">Expresso</h1>
-          <h2 className="text-xl font-bold uppercase leading-tight mb-2">Electro Ferragens, Lda.</h2>
+          <h1 className="text-3xl font-black uppercase tracking-widest mb-6">Future Development Corporation Lda</h1>
+          <h2 className="text-xl font-bold uppercase leading-tight mb-2">Recibo</h2>
           <div className="text-md text-black print:text-black leading-relaxed">
-            <p>Av. Filipe Samuel Magaia N-261</p>
+            <p>Av. Do Trabalho Nº 1815R/C</p>
             <p>Maputo - Moçambique</p>
-            <p>Tel: 21322081 / 21305406</p>
-            <p className="mt-1">NUIT: <span className="font-bold">265183</span></p>
+            <p>Cell: +258 82-2180024 / 82-9179999 / 84-9176666</p>
+            <p>Email: mzfdc2000@gmail.com</p>
+            <p>Website: www.fdc2000.co.mz</p>
+            <p className="mt-1">NUIT: <span className="font-bold">400 092 281</span></p>
           </div>
         </div>
 
@@ -507,12 +521,12 @@ export default function ReceiptPage() {
 
         {/* Informações da Venda (Transformado em Grid para melhor alinhamento) */}
         <div className="mb-4 text-md grid grid-cols-2 gap-y-2">
-          <p><span className="font-semibold">Data:</span> 28/08/2026</p>
+          <p><span className="font-semibold">Data:</span> 01/09/2026</p>
           {/* {dateObj.toLocaleDateString('pt-MZ')} */}
-          <p className="text-right"><span className="font-semibold">Hora:</span> 11:18:40</p>
-          <p><span className="font-semibold">Recibo:</span> #{Math.floor(Math.random() * 10000).toString().padStart(5, '0')}</p>
-          <p className="text-right"><span className="font-semibold">Op:</span> {data.operator}</p>
-          <p className="col-span-2 mt-1 truncate"><span className="font-semibold">Cliente:</span> {data.customer || 'Júlio'}</p>
+          <p className="text-right"><span className="font-semibold">Hora:</span> 00:00:00</p>
+          <p><span className="font-semibold">Recibo:</span> #MZOR260831010029</p>
+          <p className="text-right"><span className="font-semibold">Loja:</span> Av. Do Trabalho 1815</p>
+          <p className="col-span-2 mt-1 truncate"><span className="font-semibold">Cliente:</span> {data.customer || 'Movel'}</p>
         </div>
 
         <div className="border-t border-dashed border-black print:border-black my-4"></div>
@@ -537,47 +551,50 @@ export default function ReceiptPage() {
 
         <div className="border-t border-dashed border-black print:border-black my-4"></div>
 
-        {/* Totais */}
+        {/* Totais com Sub-total e IVA */}
         <div className="space-y-2 mb-6">
-          <div className="flex justify-between font-bold text-xl">
-            <span>TOTAL A PAGAR:</span>
-            <span>{data.total.toLocaleString('pt-MZ', { minimumFractionDigits: 2 })} MT</span>
+          <div className="flex justify-between text-md text-black print:text-black">
+            <span>Sub-total:</span>
+            <span>{data.subtotal?.toLocaleString('pt-MZ', { minimumFractionDigits: 2 }) || '6,056,63'} MT</span>
           </div>
           <div className="flex justify-between text-md text-black print:text-black">
+            <span>IVA 16%:</span>
+            <span>{data.iva?.toLocaleString('pt-MZ', { minimumFractionDigits: 2 }) || '969,07'} MT</span>
+          </div>
+          <div className="flex justify-between font-bold text-xl mt-2 pt-2 border-t border-gray-300 print:border-black">
+            <span>TOTAL A PAGAR:</span>
+            <span>{((data.total ?? 0) + 969.07).toLocaleString('pt-MZ', { minimumFractionDigits: 2 })} MT</span>
+          </div>
+          <div className="flex justify-between text-md text-black print:text-black mt-2">
             <span>Método de Pagamento:</span>
             <span className="uppercase font-semibold">{data.paymentMethod}</span>
           </div>
         </div>
 
-        {/* Rodapé Dinâmico (Empurrado para o fim com mt-auto) */}
-        <div className="mt-auto pt-8 text-center">
 
-          {/* Etiqueta de Isenção de IVA */}
-          {/* <div className="mb-6">
-        <span className="font-bold text-sm border-2 border-black print:border-black px-4 py-1 uppercase tracking-wider inline-block">
-          * Isento de IVA *
-        </span>
-      </div> */}
-          <div className="my-8 flex justify-center items-center overflow-visible">
-            {/* <div className="my-10 flex justify-center items-center overflow-visible">
+             <div className="my-8 flex justify-center items-center overflow-visible">
+            <div className="my-10 flex justify-center items-center overflow-visible">
               <div className="inline-block transform -rotate-[12deg] border-[5px] border-black print:border-black rounded-2xl px-10 py-3.5 opacity-90 print:opacity-100 shadow-sm">
                 <span className="block text-4xl font-black text-black print:text-black uppercase tracking-[0.2em] leading-none ml-2">
                   PAGO
                 </span>
               </div>
-            </div> */}
-          </div>
-
-            <div className="space-y-1 text-md text-black print:text-black mt-34">
-              <p className="font-bold text-lg text-black">Obrigado pela preferência!</p>
-              <p className="text-md">Conserve este talão como prova de compra.</p>
-              <p className="text-md mt-3 pt-3 border-t border-gray-200 print:border-transparent inline-block">
-                Processado por Computador
-              </p>
             </div>
-            <div className="mt-54 border-t border-dashed border-gray-400 print:border-black"></div>
           </div>
 
+        {/* Rodapé Dinâmico */}
+        <div className="mt-auto pt-8 text-center">
+          <div className="my-8 flex justify-center items-center overflow-visible">
+          </div>
+
+          <div className="space-y-1 text-md text-black print:text-black mt-34">
+            <p className="font-bold text-lg text-black">Obrigado pela preferência!</p>
+            <p className="text-md">Validade: 15 Dias</p>
+            <p className="text-md mt-3 pt-3 border-t border-gray-200 print:border-transparent inline-block">
+              Processado por Computador
+            </p>
+          </div>
+          <div className="mt-54 border-t border-dashed border-gray-400 print:border-black"></div>
         </div>
 
       </div>

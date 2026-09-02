@@ -513,7 +513,7 @@ const router = useRouter();
             <p>Cell: +258 82-2180024 / 82-9179999 / 84-9176666</p>
             <p>Email: mzfdc2000@gmail.com</p>
             <p>Website: www.fdc2000.co.mz</p>
-            <p className="mt-1">NUIT: <span className="font-bold">400 092 281</span></p>
+            <p className="mt-1">NUIT: <span className="font-bold">400268177</span></p>
           </div>
         </div>
 

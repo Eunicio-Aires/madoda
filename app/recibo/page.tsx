@@ -526,7 +526,7 @@ const router = useRouter();
           <p className="text-right"><span className="font-semibold">Hora:</span> 00:00:00</p>
           <p><span className="font-semibold">Recibo:</span> #MZOR260831010029</p>
           <p className="text-right"><span className="font-semibold">Loja:</span> Rua da Marginal 9C</p>
-          <p className="col-span-2 mt-1 truncate"><span className="font-semibold">Cliente:</span> {data.customer || 'Movel'}</p>
+          <p className="col-span-2 mt-1 truncate"><span className="font-semibold">Cliente:</span> {data.customer || 'LOYDE'}</p>
         </div>
 
         <div className="border-t border-dashed border-black print:border-black my-4"></div>

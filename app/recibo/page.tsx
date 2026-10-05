@@ -384,27 +384,26 @@ interface ReceiptData {
 }
 
 export default function ReceiptPage() {
+  const defaultItems: ReceiptItem[] = [
+    { desc: 'TUBO PPR 25 OU 3/4', qtd: 4, precoUnit: 180.0, total: 720.0 },
+    { desc: 'TUBO PVC 50 BRANCO ARON 2X5.80MM', qtd: 2, precoUnit: 700.0, total: 1400.0 },
+    { desc: 'CURVA PVC 50 ELIAS', qtd: 4, precoUnit: 30.0, total: 120.0 },
+    { desc: 'MEIA CURVA -50 PVC', qtd: 3, precoUnit: 40.0, total: 120.0 },
+    { desc: 'FORQUILHA -50 PVC', qtd: 1, precoUnit: 75.0, total: 75.0 },
+    { desc: 'TE PVC 50 LESSO', qtd: 1, precoUnit: 50.0, total: 50.0 },
+    { desc: 'COLA PVC GLUEDEVIL 500ML ORIGINAL', qtd: 1, precoUnit: 390.0, total: 390.0 },
+    { desc: 'COTOVELO PPR 25', qtd: 12, precoUnit: 10.0, total: 120.0 },
+    { desc: 'UNIAO PPR 25', qtd: 6, precoUnit: 10.0, total: 60.0 },
+    { desc: 'ESQUADRIA NEW 1/2X1/2', qtd: 2, precoUnit: 150.0, total: 300.0 },
+    { desc: 'UNIAO PPR 25X1/2 F', qtd: 2, precoUnit: 65.0, total: 130.0 },
+    { desc: 'TE PPR 25', qtd: 3, precoUnit: 10.0, total: 30.0 },
+    { desc: 'BRACEDEIRA COM ESPIGAO 3/4', qtd: 10, precoUnit: 35.0, total: 350.0 },
+    { desc: 'BRACEDEIRA COM ESPIGAO 50MM', qtd: 10, precoUnit: 45.0, total: 450.0 },
+    { desc: 'FOLHA DE SERRA LASHER ORIGINAL', qtd: 1, precoUnit: 100.0, total: 100.0 },
+    { desc: 'SACO DE PLASTICO MD', qtd: 1, precoUnit: 5.0, total: 5.0 },
+  ];
 
-  const defaultItems = [
-  { desc: "TUBO PPR 25 OU 3/4", qtd: 4, precoUnit: 180.00, total: 720.00 },
-  { desc: "TUBO PVC 50 BRANCO ARON 2X5.80MM", qtd: 2, precoUnit: 700.00, total: 1400.00 },
-  { desc: "CURVA PVC 50 ELIAS", qtd: 4, precoUnit: 30.00, total: 120.00 },
-  { desc: "MEIA CURVA -50 PVC", qtd: 3, precoUnit: 40.00, total: 120.00 },
-  { desc: "FORQUILHA -50 PVC", qtd: 1, precoUnit: 75.00, total: 75.00 },
-  { desc: "TE PVC 50 LESSO", qtd: 1, precoUnit: 50.00, total: 50.00 },
-  { desc: "COLA PVC GLUEDEVIL 500ML ORIGINAL", qtd: 1, precoUnit: 390.00, total: 390.00 },
-  { desc: "COTOVELO PPR 25", qtd: 12, precoUnit: 10.00, total: 120.00 },
-  { desc: "UNIAO PPR 25", qtd: 6, precoUnit: 10.00, total: 60.00 },
-  { desc: "ESQUADRIA NEW 1/2X1/2", qtd: 2, precoUnit: 150.00, total: 300.00 },
-  { desc: "UNIAO PPR 25X1/2 F", qtd: 2, precoUnit: 65.00, total: 130.00 },
-  { desc: "TE PPR 25", qtd: 3, precoUnit: 10.00, total: 30.00 },
-  { desc: "BRACEDEIRA COM ESPIGAO 3/4", qtd: 10, precoUnit: 35.00, total: 350.00 },
-  { desc: "BRACEDEIRA COM ESPIGAO 50MM", qtd: 10, precoUnit: 45.00, total: 450.00 },
-  { desc: "FOLHA DE SERRA LASHER ORIGINAL", qtd: 1, precoUnit: 100.00, total: 100.00 },
-  { desc: "SACO DE PLASTICO MD", qtd: 1, precoUnit: 5.00, total: 5.00 }
-];
-  
-const router = useRouter();
+  const router = useRouter();
   const [data, setData] = useState<ReceiptData | null>(null);
 
   useEffect(() => {
@@ -615,8 +614,68 @@ const router = useRouter();
     </div>
   </div>
 
+  <div className="space-y-2 mb-6">
+  {/* Cabeçalho dos Artigos */}
+  <div className="flex justify-between font-bold text-sm text-black print:text-black mb-2 border-b border-gray-300 print:border-black pb-1">
+    <span>Descr. / Qnt X Preço Unit</span>
+    <span>Total</span>
+  </div>
+
+  {/* Lista de Artigos Embutida */}
+  <div className="space-y-3 mb-6">
+    {[
+      { desc: "TUBO PPR 25 OU 3/4", qtd: 4, precoUnit: 180.00, total: 720.00 },
+      { desc: "TUBO PVC 50 BRANCO ARON 2X5.80MM", qtd: 2, precoUnit: 700.00, total: 1400.00 },
+      { desc: "CURVA PVC 50 ELIAS", qtd: 4, precoUnit: 30.00, total: 120.00 },
+      { desc: "MEIA CURVA -50 PVC", qtd: 3, precoUnit: 40.00, total: 120.00 },
+      { desc: "FORQUILHA -50 PVC", qtd: 1, precoUnit: 75.00, total: 75.00 },
+      { desc: "TE PVC 50 LESSO", qtd: 1, precoUnit: 50.00, total: 50.00 },
+      { desc: "COLA PVC GLUEDEVIL 500ML ORIGINAL", qtd: 1, precoUnit: 390.00, total: 390.00 },
+      { desc: "COTOVELO PPR 25", qtd: 12, precoUnit: 10.00, total: 120.00 },
+      { desc: "UNIAO PPR 25", qtd: 6, precoUnit: 10.00, total: 60.00 },
+      { desc: "ESQUADRIA NEW 1/2X1/2", qtd: 2, precoUnit: 150.00, total: 300.00 },
+      { desc: "UNIAO PPR 25X1/2 F", qtd: 2, precoUnit: 65.00, total: 130.00 },
+      { desc: "TE PPR 25", qtd: 3, precoUnit: 10.00, total: 30.00 },
+      { desc: "BRACEDEIRA COM ESPIGAO 3/4", qtd: 10, precoUnit: 35.00, total: 350.00 },
+      { desc: "BRACEDEIRA COM ESPIGAO 50MM", qtd: 10, precoUnit: 45.00, total: 450.00 },
+      { desc: "FOLHA DE SERRA LASHER ORIGINAL", qtd: 1, precoUnit: 100.00, total: 100.00 },
+      { desc: "SACO DE PLASTICO MD", qtd: 1, precoUnit: 5.00, total: 5.00 }
+    ].map((item, index) => (
+      <div key={index} className="flex justify-between text-sm text-black print:text-black">
+        <div className="flex flex-col">
+          <span className="font-semibold">{item.desc}</span>
+          <span className="text-gray-700 print:text-black">
+            {item.qtd} x {(item.precoUnit).toLocaleString('pt-MZ', { minimumFractionDigits: 2 })} MT
+          </span>
+        </div>
+        <span className="mt-auto">
+          {(item.total).toLocaleString('pt-MZ', { minimumFractionDigits: 2 })} MT
+        </span>
+      </div>
+    ))}
+  </div>
+
+  {/* Resumo e Totais */}
+  <div className="flex justify-between text-md text-black print:text-black pt-4 border-t border-gray-300 print:border-black">
+    <span>Sub-total:</span>
+    <span>{data.subtotal?.toLocaleString('pt-MZ', { minimumFractionDigits: 2 }) || '4.420,00'} MT</span>
+  </div>
+  <div className="flex justify-between text-md text-black print:text-black">
+    <span>IVA:</span>
+    <span>{data.iva?.toLocaleString('pt-MZ', { minimumFractionDigits: 2 }) || '0,00'} MT</span>
+  </div>
+  <div className="flex justify-between font-bold text-xl mt-2 pt-2 border-t border-gray-300 print:border-black">
+    <span>TOTAL A PAGAR:</span>
+    <span>{(data.total ?? 4420).toLocaleString('pt-MZ', { minimumFractionDigits: 2 })} MT</span>
+  </div>
+  <div className="flex justify-between text-md text-black print:text-black mt-2">
+    <span>Método de Pagamento:</span>
+    <span className="uppercase font-semibold">{data.paymentMethod}</span>
+  </div>
+</div>
+
   {/* Secção de Totais e Sub-totais */}
-  <div className="space-y-2 border-t border-gray-300 print:border-black pt-4">
+  {/* <div className="space-y-2 border-t border-gray-300 print:border-black pt-4">
     <div className="flex justify-between text-md text-black print:text-black">
       <span>Sub-total:</span>
       <span>{data.subtotal?.toLocaleString('pt-MZ', { minimumFractionDigits: 2 }) || '4.420,00'} MT</span>
@@ -633,7 +692,7 @@ const router = useRouter();
       <span>Método de Pagamento:</span>
       <span className="uppercase font-semibold">{data.paymentMethod}</span>
     </div>
-  </div>
+  </div> */}
 </div>
         {/* <div className="space-y-2 mb-6">
           <div className="flex justify-between text-md text-black print:text-black">

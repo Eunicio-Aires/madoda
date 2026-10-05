@@ -505,15 +505,15 @@ const router = useRouter();
 
         {/* Cabeçalho */}
         <div className="text-center mb-6">
-          <h1 className="text-3xl font-black uppercase tracking-widest mb-6">Future Development Corporation Lda</h1>
+          <h1 className="text-3xl font-black uppercase tracking-widest mb-6">KUYAKA COMERCIAL Lda</h1>
           <h2 className="text-xl font-bold uppercase leading-tight mb-2">Recibo</h2>
           <div className="text-md text-black print:text-black leading-relaxed">
-            <p>Av. Do Trabalho Nº 1815R/C</p>
-            <p>Maputo - Moçambique</p>
-            <p>Cell: +258 82-2180024 / 82-9179999 / 84-9176666</p>
-            <p>Email: mzfdc2000@gmail.com</p>
-            <p>Website: www.fdc2000.co.mz</p>
-            <p className="mt-1">NUIT: <span className="font-bold">400268177</span></p>
+            <p>RUA DA MARGINAL Nº 9C</p>
+            <p>Maputo - Costa do Sol - Moçambique</p>
+            {/* <p>Cell: +258 82-2180024 / 82-9179999 / 84-9176666</p> */}
+            {/* <p>Email: mzfdc2000@gmail.com</p> */}
+            {/* <p>Website: www.fdc2000.co.mz</p> */}
+            <p className="mt-1">NUIT: <span className="font-bold">402104026</span></p>
           </div>
         </div>
 
@@ -521,11 +521,11 @@ const router = useRouter();
 
         {/* Informações da Venda (Transformado em Grid para melhor alinhamento) */}
         <div className="mb-4 text-md grid grid-cols-2 gap-y-2">
-          <p><span className="font-semibold">Data:</span> 01/09/2026</p>
+          <p><span className="font-semibold">Data:</span> 03/10/2026</p>
           {/* {dateObj.toLocaleDateString('pt-MZ')} */}
           <p className="text-right"><span className="font-semibold">Hora:</span> 00:00:00</p>
           <p><span className="font-semibold">Recibo:</span> #MZOR260831010029</p>
-          <p className="text-right"><span className="font-semibold">Loja:</span> Av. Do Trabalho 1815</p>
+          <p className="text-right"><span className="font-semibold">Loja:</span> Rua da Marginal 9C</p>
           <p className="col-span-2 mt-1 truncate"><span className="font-semibold">Cliente:</span> {data.customer || 'Movel'}</p>
         </div>
 

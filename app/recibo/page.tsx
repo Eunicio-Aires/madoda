@@ -556,14 +556,14 @@ export default function ReceiptPage() {
         <div className="border-t border-dashed border-black print:border-black my-4"></div>
 
         {/* Cabeçalho da Tabela */}
-        <div className="flex justify-between font-bold text-md mb-3 uppercase border-b border-gray-300 print:border-black pb-2">
+        {/* <div className="flex justify-between font-bold text-md mb-3 uppercase border-b border-gray-300 print:border-black pb-2">
           <span className="w-3/5 text-left">Artigo</span>
           <span className="w-1/5 text-center">Qtd</span>
           <span className="w-1/5 text-right">Total</span>
-        </div>
+        </div> */}
 
         {/* Lista de Itens */}
-        <div className="space-y-3 mb-6 text-md">
+        {/* <div className="space-y-3 mb-6 text-md">
           {data.items.map((item, index) => {
             const name = item.name ?? `Item ${index + 1}`;
             const qty = Number(item.qty ?? 0);
@@ -577,7 +577,7 @@ export default function ReceiptPage() {
               </div>
             );
           })}
-        </div>
+        </div> */}
 
         <div className="border-t border-dashed border-black print:border-black my-4"></div>
 

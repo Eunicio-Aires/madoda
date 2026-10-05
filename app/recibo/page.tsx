@@ -590,7 +590,7 @@ export default function ReceiptPage() {
       <span>Total</span>
     </div>
     
-    <div className="space-y-3">
+    {/* <div className="space-y-3">
       {(data.items?.length ? data.items : defaultItems).map((item, index) => {
         const desc = item?.desc ?? `Item ${index + 1}`;
         const qtd = Number(item?.qtd ?? 0);
@@ -611,7 +611,7 @@ export default function ReceiptPage() {
           </div>
         );
       })}
-    </div>
+    </div> */}
   </div>
 
   <div className="space-y-2 mb-6">
@@ -666,7 +666,7 @@ export default function ReceiptPage() {
   </div>
   <div className="flex justify-between font-bold text-xl mt-2 pt-2 border-t border-gray-300 print:border-black">
     <span>TOTAL A PAGAR:</span>
-    <span>{(data.total ?? 4420).toLocaleString('pt-MZ', { minimumFractionDigits: 2 })} MT</span>
+    <span>{( 4420).toLocaleString('pt-MZ', { minimumFractionDigits: 2 })} MT</span>
   </div>
   <div className="flex justify-between text-md text-black print:text-black mt-2">
     <span>Método de Pagamento:</span>

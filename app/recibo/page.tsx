@@ -521,7 +521,7 @@ const router = useRouter();
 
         {/* Informações da Venda (Transformado em Grid para melhor alinhamento) */}
         <div className="mb-4 text-md grid grid-cols-2 gap-y-2">
-          <p><span className="font-semibold">Data:</span> 03/10/2026</p>
+          <p><span className="font-semibold">Data:</span> 02/10/2026</p>
           {/* {dateObj.toLocaleDateString('pt-MZ')} */}
           <p className="text-right"><span className="font-semibold">Hora:</span> 00:00:00</p>
           <p><span className="font-semibold">Recibo:</span> #MZOR260831010029</p>

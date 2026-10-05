@@ -359,11 +359,17 @@ import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 // import { ReceiptData } from '../types/receipt';
 
+
+
 interface ReceiptItem {
-  id: string | number;
-  name: string;
-  qty: number;
-  price: number;
+  id?: string | number;
+  name?: string;
+  qty?: number;
+  qtd?: number;
+  price?: number;
+  desc?: string;
+  precoUnit?: number;
+  total?: number;
 }
 
 interface ReceiptData {
@@ -378,6 +384,25 @@ interface ReceiptData {
 }
 
 export default function ReceiptPage() {
+
+  const defaultItems = [
+  { desc: "TUBO PPR 25 OU 3/4", qtd: 4, precoUnit: 180.00, total: 720.00 },
+  { desc: "TUBO PVC 50 BRANCO ARON 2X5.80MM", qtd: 2, precoUnit: 700.00, total: 1400.00 },
+  { desc: "CURVA PVC 50 ELIAS", qtd: 4, precoUnit: 30.00, total: 120.00 },
+  { desc: "MEIA CURVA -50 PVC", qtd: 3, precoUnit: 40.00, total: 120.00 },
+  { desc: "FORQUILHA -50 PVC", qtd: 1, precoUnit: 75.00, total: 75.00 },
+  { desc: "TE PVC 50 LESSO", qtd: 1, precoUnit: 50.00, total: 50.00 },
+  { desc: "COLA PVC GLUEDEVIL 500ML ORIGINAL", qtd: 1, precoUnit: 390.00, total: 390.00 },
+  { desc: "COTOVELO PPR 25", qtd: 12, precoUnit: 10.00, total: 120.00 },
+  { desc: "UNIAO PPR 25", qtd: 6, precoUnit: 10.00, total: 60.00 },
+  { desc: "ESQUADRIA NEW 1/2X1/2", qtd: 2, precoUnit: 150.00, total: 300.00 },
+  { desc: "UNIAO PPR 25X1/2 F", qtd: 2, precoUnit: 65.00, total: 130.00 },
+  { desc: "TE PPR 25", qtd: 3, precoUnit: 10.00, total: 30.00 },
+  { desc: "BRACEDEIRA COM ESPIGAO 3/4", qtd: 10, precoUnit: 35.00, total: 350.00 },
+  { desc: "BRACEDEIRA COM ESPIGAO 50MM", qtd: 10, precoUnit: 45.00, total: 450.00 },
+  { desc: "FOLHA DE SERRA LASHER ORIGINAL", qtd: 1, precoUnit: 100.00, total: 100.00 },
+  { desc: "SACO DE PLASTICO MD", qtd: 1, precoUnit: 5.00, total: 5.00 }
+];
   
 const router = useRouter();
   const [data, setData] = useState<ReceiptData | null>(null);
@@ -540,19 +565,77 @@ const router = useRouter();
 
         {/* Lista de Itens */}
         <div className="space-y-3 mb-6 text-md">
-          {data.items.map((item) => (
-            <div key={item.id} className="flex justify-between items-start">
-              <span className="w-3/5 pr-2 leading-tight break-words">{item.name}</span>
-              <span className="w-1/5 text-center">{item.qty}</span>
-              <span className="w-1/5 text-right font-medium">{(item.price * item.qty).toLocaleString('pt-MZ')}</span>
-            </div>
-          ))}
+          {data.items.map((item, index) => {
+            const name = item.name ?? `Item ${index + 1}`;
+            const qty = Number(item.qty ?? 0);
+            const price = Number(item.price ?? 0);
+
+            return (
+              <div key={item.id ?? `${name}-${index}`} className="flex justify-between items-start">
+                <span className="w-3/5 pr-2 leading-tight break-words">{name}</span>
+                <span className="w-1/5 text-center">{qty}</span>
+                <span className="w-1/5 text-right font-medium">{(price * qty).toLocaleString('pt-MZ')}</span>
+              </div>
+            );
+          })}
         </div>
 
         <div className="border-t border-dashed border-black print:border-black my-4"></div>
 
         {/* Totais com Sub-total e IVA */}
-        <div className="space-y-2 mb-6">
+        <div className="mb-6">
+  {/* Secção da Lista de Artigos */}
+  <div className="border-b border-gray-300 print:border-black pb-2 mb-4">
+    <div className="flex justify-between font-bold text-sm text-black print:text-black mb-3">
+      <span>Descr. / Qnt X Preço Unit</span>
+      <span>Total</span>
+    </div>
+    
+    <div className="space-y-3">
+      {(data.items?.length ? data.items : defaultItems).map((item, index) => {
+        const desc = item?.desc ?? `Item ${index + 1}`;
+        const qtd = Number(item?.qtd ?? 0);
+        const precoUnit = Number(item?.precoUnit ?? 0);
+        const totalValue = Number(item?.total ?? 0);
+
+        return (
+          <div key={index} className="flex justify-between text-sm text-black print:text-black">
+            <div className="flex flex-col">
+              <span className="font-semibold">{desc}</span>
+              <span className="text-gray-700 print:text-black">
+                {qtd} x {precoUnit.toLocaleString('pt-MZ', { minimumFractionDigits: 2 })} MT
+              </span>
+            </div>
+            <span className="mt-auto">
+              {totalValue.toLocaleString('pt-MZ', { minimumFractionDigits: 2 })} MT
+            </span>
+          </div>
+        );
+      })}
+    </div>
+  </div>
+
+  {/* Secção de Totais e Sub-totais */}
+  <div className="space-y-2 border-t border-gray-300 print:border-black pt-4">
+    <div className="flex justify-between text-md text-black print:text-black">
+      <span>Sub-total:</span>
+      <span>{data.subtotal?.toLocaleString('pt-MZ', { minimumFractionDigits: 2 }) || '4.420,00'} MT</span>
+    </div>
+    <div className="flex justify-between text-md text-black print:text-black">
+      <span>IVA:</span>
+      <span>{data.iva?.toLocaleString('pt-MZ', { minimumFractionDigits: 2 }) || '0,00'} MT</span>
+    </div>
+    <div className="flex justify-between font-bold text-xl mt-2 pt-2 border-t border-gray-300 print:border-black">
+      <span>TOTAL A PAGAR:</span>
+      <span>{(data.total ?? 4420).toLocaleString('pt-MZ', { minimumFractionDigits: 2 })} MT</span>
+    </div>
+    <div className="flex justify-between text-md text-black print:text-black mt-2">
+      <span>Método de Pagamento:</span>
+      <span className="uppercase font-semibold">{data.paymentMethod}</span>
+    </div>
+  </div>
+</div>
+        {/* <div className="space-y-2 mb-6">
           <div className="flex justify-between text-md text-black print:text-black">
             <span>Sub-total:</span>
             <span>{data.subtotal?.toLocaleString('pt-MZ', { minimumFractionDigits: 2 }) || '6,056,63'} MT</span>
@@ -569,7 +652,7 @@ const router = useRouter();
             <span>Método de Pagamento:</span>
             <span className="uppercase font-semibold">{data.paymentMethod}</span>
           </div>
-        </div>
+        </div> */}
 
 
              <div className="my-8 flex justify-center items-center overflow-visible">
